@@ -17,5 +17,5 @@ def download_pictures(urls, filename, payload=None):
     for picture_number, picture in enumerate(urls):
         picture_response = requests.get(picture, params=payload)
         picture_response.raise_for_status()
-        with open(f"images/{filename}_{picture_number}{split_link(picture)}", "wb") as file:
+        with open(f"images/{filename}_{picture_number}.{split_link(picture)}", "wb") as file:
             file.write(picture_response.content)
