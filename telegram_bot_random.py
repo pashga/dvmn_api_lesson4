@@ -11,7 +11,7 @@ def main():
     bot = telegram.Bot(token=os.environ["TELEGRAM_BOT_TOKEN"])
     list_images = os.listdir("images")
     random.shuffle(list_images)
-    parser = argparse.ArgumentParser(description="Publish images to Telegram channel")
+    parser = argparse.ArgumentParser(description="Publish random images to Telegram channel")
     parser.add_argument("post_delay",
                         help='Posting delay in hours',
                         type=float,
