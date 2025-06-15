@@ -4,7 +4,6 @@ import os
 from help_scripts import download_pictures
 from dotenv import load_dotenv
 
-load_dotenv()
 
 def get_apod_pictures(token):
     photo_url = []
@@ -12,6 +11,7 @@ def get_apod_pictures(token):
     url = "https://api.nasa.gov/planetary/apod"
     payload = {
         "api_key": token,
+        "thumbs": "True",
         "count": 50,
     }
     response = requests.get(url, params=payload)
@@ -22,6 +22,10 @@ def get_apod_pictures(token):
         photo_url.append(urls["url"])
     download_pictures(photo_url,filename)
 
+def main():
+    load_dotenv()
+    token = os.environ['NASA_API_TOKEN']
+    get_apod_pictures(token)
 
-token = os.environ['NASA_API_TOKEN']
-get_apod_pictures(token)
+if __name__ == "__main__":
+    main()

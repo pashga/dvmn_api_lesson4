@@ -12,7 +12,9 @@ def fetch_spacex_last_launch(url):
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Saving photos from launches. Please enter ID launch or leave it empty to display the last startup."
+    )
     parser.add_argument("user_input", nargs='?', type=str, help="Enter ID launch")
     args = parser.parse_args()
     if args.user_input:

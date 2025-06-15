@@ -5,7 +5,6 @@ import os
 from help_scripts import download_pictures
 from dotenv import load_dotenv
 
-load_dotenv()
 
 def get_epic_picrures(token):
     photo_url = []
@@ -24,6 +23,10 @@ def get_epic_picrures(token):
         photo_url.append(url)
     download_pictures(photo_url,filename, payload=payload)
 
+def main():
+    load_dotenv()
+    token = os.environ['NASA_API_TOKEN']
+    get_epic_picrures(token)
 
-token = os.environ['NASA_API_TOKEN']
-get_epic_picrures(token)
+if __name__ == "__main__":
+    main()
